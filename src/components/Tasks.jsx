@@ -1,14 +1,18 @@
-import Task from "./Task";
+import { useContext } from 'react'
+import { TasksContext } from '../context'
+import Task from './Task'
 
-const Tasks = ({ tasks, onDelete, onToggle }) => {
+const Tasks = () => {
+  const { tasks } = useContext(TasksContext)
+  return (
+    <section>
+      {tasks.length > 0
+        ? tasks.map((task) => (
+          <Task key={task.id} task={task} />
+          ))
+        : 'No hay tareas para mostrar'}
+    </section>
+  )
+}
 
-	return (
-		<div>
-			{tasks.map((task) => (
-				<Task key={task.id} task={task} onDelete={onDelete} onToggle={onToggle} />
-			))}
-		</div>
-	);
-};
-
-export default Tasks;
+export default Tasks

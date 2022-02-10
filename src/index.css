@@ -59,6 +59,7 @@ body {
   margin: 5px;
   padding: 10px 20px;
   /* cursor: pointer; */
+  position: relative;
 }
 
 .task.terminado {
@@ -109,4 +110,12 @@ body {
 footer {
   margin-top: 30px;
   text-align: center;
+}
+.close{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1rem;
+  color: red;
+  cursor: pointer;
 }

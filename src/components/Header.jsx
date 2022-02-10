@@ -1,37 +1,21 @@
 import { FaTasks } from 'react-icons/fa'
 import PropTypes from 'prop-types'
-import Button from './Button';
+import Button from './Button'
+import { useContext } from 'react'
+import { TasksContext } from '../context'
 
-const Header = ({ title, onAdd, showAdd }) => {
-
-	const agregar = () => {
-		console.log('agregar')
-	}
-
-	const eliminar = () => {
-		console.log('eliminar')
-	}
-
-	return (
-		<header className='header'>
-			<h1><FaTasks /> {title}</h1>
-			<Button color={showAdd ? 'blue' : 'green'} text={showAdd ? 'Cerrar' : 'Agregar'} onClick={onAdd} />
-		</header>
-	);
-};
-
-// Header.defaultProps = {
-// 	title: 'Titulo por defecto'
-// }
-
-Header.propTypes = {
-	title: PropTypes.string.isRequired,
+const Header = ({ title }) => {
+  const { showAdd, setShowAdd } = useContext(TasksContext)
+  return (
+    <header className='header'>
+      <h1><FaTasks /> {title}</h1>
+      <Button color={showAdd ? 'blue' : 'green'} text={showAdd ? 'Cerrar' : 'Agregar'} onClick={() => setShowAdd(!showAdd)} />
+    </header>
+  )
 }
 
-// const estilos = {
-// 	color: 'red',
-// 	backgroundColor: 'black',
-// }
+Header.propTypes = {
+  title: PropTypes.string.isRequired
+}
 
-export default Header;
-
+export default Header
